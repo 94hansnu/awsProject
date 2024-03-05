@@ -28,7 +28,7 @@ public class UserServiceTest {
     }
 
     @Test
-    // Test för att hämta en användare baserat på användarnamn från användarrepositoryn
+    // Test för att hämta en användare baserat på användarnamn från användarrepository
     public void testGetUserByUsername() {
         // Mocka User-objekt
         User user = new User();
