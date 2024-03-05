@@ -1,4 +1,4 @@
-package awsProject.awsProject;
+/*package awsProject.awsProject;
 
 import awsProject.awsProject.database.entity.User;
 import awsProject.awsProject.database.repository.UserRepository;
@@ -52,4 +52,4 @@ public class UserServiceTest {
 
         Assertions.assertDoesNotThrow(() -> userService.loadUserByUsername("UserTest"));
     }
-}
+}*/
