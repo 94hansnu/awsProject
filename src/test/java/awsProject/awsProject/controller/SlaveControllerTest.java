@@ -16,7 +16,7 @@ import org.springframework.http.ResponseEntity;
 
 public class SlaveControllerTest {
 
-   /* @Mock
+    @Mock
     private SlaveService slaveService;
 
     @InjectMocks
@@ -56,5 +56,5 @@ public class SlaveControllerTest {
         // Assert
         assertEquals(400, response.getStatusCodeValue());
         assertNull(response.getBody());
-    }*/
+    }
 }
