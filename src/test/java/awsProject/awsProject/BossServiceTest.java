@@ -79,8 +79,6 @@ public class BossServiceTest {
 
         Assertions.assertNotNull(result);
         Assertions.assertEquals("CEO", result.getTitle());
-
-        //Assertions.assertNull(result.getSlaves());
     }
 
     @Test
