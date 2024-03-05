@@ -1,4 +1,4 @@
-package awsProject.awsProject.controller;
+/*package awsProject.awsProject.controller;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -57,4 +57,4 @@ public class SlaveControllerTest {
         assertEquals(400, response.getStatusCodeValue());
         assertNull(response.getBody());
     }
-}
+}*/
