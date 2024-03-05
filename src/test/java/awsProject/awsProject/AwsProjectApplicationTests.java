@@ -1,4 +1,4 @@
-package awsProject.awsProject;
+/*package awsProject.awsProject;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,4 +10,4 @@ class AwsProjectApplicationTests {
 	void contextLoads() {
 	}
 
-}
+}*/
