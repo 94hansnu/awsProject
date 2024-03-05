@@ -24,7 +24,7 @@ public class AwsProjectApplication {
 
 
 
-	@Bean
+	@Bean // :)
 	CommandLineRunner runner(RoleRepository roleRepository, UserRepository userRepository, PasswordEncoder encoder) {
 
 		return args -> {
