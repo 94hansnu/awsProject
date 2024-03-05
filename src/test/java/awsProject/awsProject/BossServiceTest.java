@@ -38,6 +38,7 @@ public class BossServiceTest {
     @Test
     // Testa hämta alla bossar
     public void testGetAllBosses() {
+        // Arrange
         // Mocka Boss-objekt
         Boss boss1 = new Boss();
         boss1.setTitle("CEO");
@@ -47,21 +48,26 @@ public class BossServiceTest {
 
         when(bossRepository.findAll()).thenReturn(bosses);
 
+        // Act
         List<Boss> result = bossService.getAllBosses();
 
+        // Assert
         Assertions.assertEquals(2, result.size());
     }
 
     @Test
     // Test för att hämta Boss genom angivet ID
     public void testGetBossById() {
+        // Arrange
         Boss boss = new Boss();
         boss.setTitle("CEO");
 
         when(bossRepository.findById(1L)).thenReturn(Optional.of(boss));
 
+        // Act
         Optional<Boss> result = bossService.getBossById(1L);
 
+        // Assert
         Assertions.assertTrue(result.isPresent());
         Assertions.assertEquals("CEO", result.get().getTitle());
     }
@@ -69,14 +75,16 @@ public class BossServiceTest {
     @Test
     // Test för att spara en ny boss
     public void testSaveBoss() {
+        // Arrange
         Boss boss = new Boss();
         boss.setTitle("CEO");
 
         when(bossRepository.save(any(Boss.class))).thenReturn(boss);
 
-        // Testa saveBoss-metoden
+        // Act
         Boss result = bossService.saveBoss(boss);
 
+        // Assert
         Assertions.assertNotNull(result);
         Assertions.assertEquals("CEO", result.getTitle());
     }
@@ -84,17 +92,17 @@ public class BossServiceTest {
     @Test
     // Test för att uppdatera en boss
     public void testUpdateBoss() {
+        // Arrange
         Boss boss = new Boss();
         boss.setTitle("CEO");
 
         when(bossRepository.findById(1L)).thenReturn(Optional.of(boss));
         when(bossRepository.save(any(Boss.class))).thenReturn(boss);
 
-        // Skapa nytt Boss-objekt och sätta titeln
         Boss updatedBoss = new Boss();
         updatedBoss.setTitle("NyBoss");
 
-        // Testa updateBoss-metod
+        // Act
         Optional<Boss> result = bossService.updateBoss(1L, updatedBoss);
 
         // Assert
@@ -105,15 +113,17 @@ public class BossServiceTest {
     @Test
     // Test för att ta bort en boss
     public void testDeleteBoss() {
-        // Mocka Boss-objekt
+        // Arrange
         Boss boss = new Boss();
+        // Skapa en tom lista för slavar för att undvika null-pointer exception
         boss.setSlaves(new ArrayList<>());
 
         when(bossRepository.findById(1L)).thenReturn(Optional.of(boss));
 
-        //Testa deleteBoss-metoden
+        // Act
         bossService.deleteBoss(1L);
 
+        // Verify
         verify(slaveRepository, times(1)).saveAll(any());
         verify(bossRepository, times(1)).delete(boss);
     }
