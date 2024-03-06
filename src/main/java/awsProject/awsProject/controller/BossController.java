@@ -5,7 +5,6 @@ import awsProject.awsProject.service.BossService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -53,8 +52,12 @@ public class BossController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteBoss(@PathVariable Long id) {
-        bossService.deleteBoss(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<String> deleteBoss (@PathVariable Long id){
+        boolean deleted = bossService.deleteBoss(id);
+        if (deleted) {
+            return ResponseEntity.ok("The boss with ID " + id + " has been deleted.");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The boss with ID " + id + " could not be found.");
+        }
     }
 }
