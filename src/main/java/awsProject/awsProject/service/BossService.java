@@ -69,20 +69,19 @@ public class BossService {
         }
     }
 
-    public void deleteBoss(Long id) {
+    public Boolean deleteBoss(Long id) {
         Optional<Boss> bossOptional = bossRepository.findById(id);
-        bossOptional.ifPresent(boss -> {
-            // Hämta alla slavar som är kopplade till denna boss
+        if (bossOptional.isPresent()) {
+            Boss boss = bossOptional.get();
             List<Slave> slaves = boss.getSlaves();
-            // Ta bort bossens referenser från slavarna
             for (Slave slave : slaves) {
                 slave.setBoss(null);
             }
-            // Spara de ändrade slavarna
             slaveRepository.saveAll(slaves);
-            // Radera bossen
             bossRepository.delete(boss);
-        });
+            return true;
+        } else {
+            return false;
+        }
     }
-
 }

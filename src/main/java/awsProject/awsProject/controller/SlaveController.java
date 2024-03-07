@@ -81,12 +81,15 @@ public class SlaveController {
         return ResponseEntity.status(400).body(updateSave);
     }
 
-
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Void> deleteSlave(@PathVariable Long id) {
-        slaveService.deleteSlave(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<String> deleteSlave (@PathVariable Long id) {
+        boolean deleted = slaveService.deleteSlave(id);
+        if (deleted) {
+            return ResponseEntity.ok("The slave with ID " + id + " has been deleted.");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The slave with ID " + id + " could not be found.");
+        }
     }
 }
 
