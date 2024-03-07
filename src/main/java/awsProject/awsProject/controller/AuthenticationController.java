@@ -32,7 +32,7 @@ public class AuthenticationController {
     }
 
     @PutMapping("/aukt/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")//
     public ResponseEntity<User> makeAdmin(@PathVariable Long id) {
         User newAdmin = authenticationService.makeAdmin(id);
         if (newAdmin != null) return ResponseEntity.status(200).body(newAdmin);
