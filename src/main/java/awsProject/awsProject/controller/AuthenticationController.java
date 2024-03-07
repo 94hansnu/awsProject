@@ -6,6 +6,8 @@ import awsProject.awsProject.modell.dto.LoginResponse;
 import awsProject.awsProject.modell.dto.Registration;
 import awsProject.awsProject.service.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -28,4 +30,13 @@ public class AuthenticationController {
     public LoginResponse login(@RequestBody Registration body) {
         return authenticationService.login(body.getUsername(), body.getPassword());
     }
+
+    @PutMapping("/aukt/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<User> makeAdmin(@PathVariable Long id) {
+        User newAdmin = authenticationService.makeAdmin(id);
+        if (newAdmin != null) return ResponseEntity.status(200).body(newAdmin);
+        return ResponseEntity.status(400).body(newAdmin);
+    }
+
 }

@@ -45,6 +45,19 @@ public class AuthenticationService {
 
         return userRepository.save(new User(username, encodedPassword, authorities));
     }
+    public User makeAdmin(Long id) {
+        User newAdmin = userRepository.findById(id).orElse(null);
+        if (newAdmin == null) return newAdmin;
+
+        Role adminRole = roleRepository.findByAuthority("ADMIN").orElse(null);
+        Role userRole = roleRepository.findByAuthority("USER").orElse(null);
+        Set<Role> roles = new HashSet<>();
+        roles.add(adminRole);
+        roles.add(userRole);
+        newAdmin.setAuthorities(roles);
+
+        return userRepository.save(newAdmin);
+    }
 
     public LoginResponse loginUser(String username, String password){
 
