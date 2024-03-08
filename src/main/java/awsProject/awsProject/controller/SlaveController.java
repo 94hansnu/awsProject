@@ -1,6 +1,7 @@
 package awsProject.awsProject.controller;
 
 import awsProject.awsProject.database.entity.Slave;
+import awsProject.awsProject.modell.dto.BossId;
 import awsProject.awsProject.service.SlaveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -58,8 +59,8 @@ public class SlaveController {
 
     @PutMapping("/boss/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Slave> updateSlaveBoss(@PathVariable Long id, @RequestBody Long bossId) {
-        Slave updatedSlave = slaveService.updateSlaveBoss(id, bossId);
+    public ResponseEntity<Slave> updateSlaveBoss(@PathVariable Long id, @RequestBody BossId bossId) {
+        Slave updatedSlave = slaveService.updateSlaveBoss(id, bossId.bossId());
 
         if (updatedSlave !=  null){
             return ResponseEntity.ok().body(updatedSlave);
