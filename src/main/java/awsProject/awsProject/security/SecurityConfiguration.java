@@ -56,14 +56,17 @@ public class SecurityConfiguration {
 
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> {
-                    auth.requestMatchers("/auth/login", "/auth/register").permitAll();
-                    auth.requestMatchers("/auth/aukt/**").hasRole("ADMIN");
-                    auth.requestMatchers("/slaves/**").hasAnyRole("USER", "ADMIN");
-                    auth.requestMatchers("/bosses/**").hasRole("ADMIN");
-                    auth.requestMatchers(HttpMethod.PUT, "/slaves/**").hasRole("ADMIN");
-                    auth.requestMatchers(HttpMethod.DELETE, "/slaves/**").hasRole("ADMIN");
-                    //auth.requestMatchers("/history/user").hasAnyRole("USER", "ADMIN");
-                   // auth.anyRequest().authenticated();
+//                    auth.requestMatchers("/auth/login", "/auth/register").permitAll();
+//                    auth.requestMatchers("/auth/aukt/**").hasRole("ADMIN");
+//                    auth.requestMatchers("/slaves/**").hasAnyRole("USER", "ADMIN");
+//                    auth.requestMatchers("/bosses/**").hasRole("ADMIN");
+//                    auth.requestMatchers(HttpMethod.PUT, "/slaves/**").hasRole("ADMIN");
+//                    auth.requestMatchers(HttpMethod.DELETE, "/slaves/**").hasRole("ADMIN");
+//                    auth.requestMatchers("/history/user").hasAnyRole("USER", "ADMIN"); // grey froms start
+//                    auth.anyRequest().authenticated(); // grey froms start
+
+                    auth.anyRequest().permitAll();
+
                 });
 
 
