@@ -1,5 +1,6 @@
 package awsProject.awsProject.database.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
@@ -19,7 +20,7 @@ public class Slave extends BaseEntity {
     private boolean efficient;
     private boolean obedient;
 
-
     @ManyToOne
+    @JsonBackReference
     private Boss boss;
 }

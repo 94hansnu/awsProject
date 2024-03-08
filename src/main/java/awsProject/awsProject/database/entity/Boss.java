@@ -1,6 +1,7 @@
 package awsProject.awsProject.database.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -18,7 +19,14 @@ public class Boss extends BaseEntity {
 
     private String title;
 
-    @JsonIgnore
+    @JsonManagedReference
     @OneToMany(mappedBy = "boss", cascade = CascadeType.ALL)
     private List<Slave> slaves;
+    @Override
+    public String toString() {
+        return "Boss{" +
+                "id=" + getId() +
+                ", title='" + title + '\'' +
+                '}';
+    }
 }
