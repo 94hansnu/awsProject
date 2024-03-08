@@ -2,6 +2,7 @@ package awsProject.awsProject.controller;
 
 import awsProject.awsProject.database.entity.Slave;
 import awsProject.awsProject.modell.dto.BossId;
+import awsProject.awsProject.modell.dto.SlaveDTO;
 import awsProject.awsProject.service.SlaveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,10 +31,12 @@ public class SlaveController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Slave> getSlaveById(@PathVariable Long id) {
+    public ResponseEntity<SlaveDTO> getSlaveById(@PathVariable Long id) {
         Optional<Slave> slave = slaveService.getSlaveById(id);
-        return slave.map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
+        if (slave.isPresent()) {
+            return ResponseEntity.status(200).body(new SlaveDTO(slave.get()));
+        }
+        else return ResponseEntity.status(404).body(null);
     }
 
     @GetMapping("/boss/{bossId}")
