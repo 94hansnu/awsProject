@@ -75,6 +75,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>aws</finalName>
 	</build>
 
 </project>
