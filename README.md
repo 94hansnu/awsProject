@@ -206,9 +206,8 @@ This project is a simple web service written in Spring Boot that manages Bosses 
 ## CI/CD
 The project uses GitHub Actions to automate the build and test process. Each push to the master branch triggers the following steps:
 
-1. Build and test the Spring Boot application.
-2. Start a MongoDB server.
-3. If the build and tests succeed, deploy the application to AWS.
+* Build and test the Spring Boot application.
+* If the build and tests succeed, deploy the application to AWS.
 
 ## AWS CI/CD- process
 
