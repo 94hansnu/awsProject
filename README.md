@@ -1,4 +1,4 @@
-# AWS Projekt
+# AWS Project
 
 ## Description
 This project is a simple web service written in Spring Boot that manages Bosses och Slaves depending on your authority level. It includes CRUD functionality for handling bosses and slaves via Postman or a frondend application.
