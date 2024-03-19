@@ -200,4 +200,27 @@ This project is a simple web service written in Spring Boot that manages Bosses 
 * Description: Delete a slave
 * Response:
   * 200 + "The slave with ID{id} has been deleted."
-  * 404 + "The slave with ID{id} could not be found." 
+  * 404 + "The slave with ID{id} could not be found."
+
+
+## CI/CD
+The project uses GitHub Actions to automate the build and test process. Each push to the master branch triggers the following steps:
+
+1. Build and test the Spring Boot application.
+2. Start a MongoDB server.
+3. If the build and tests succeed, deploy the application to AWS.
+
+## AWS CI/CD- process
+
+To automate the build, test, and deployment process for this application, we use several AWS services. Below is an overview of how each service is used:
+
+### AWS CodeBuild
+AWS CodeBuild is used to automate the build process of the Spring Boot application. By defining a build specification, we instruct CodeBuild to fetch the source code from GitHub, build and package the application, and run unit tests. The build is triggered automatically whenever there is a push to the master branch.
+
+
+### AWS Elastic Beanstalk
+AWS Elastic Beanstalk is used to manage and deploy the built application to the cloud. We have configured an environment in Elastic Beanstalk optimized for Java applications. Once the build is complete, the application is automatically deployed to this environment.
+
+
+### AWS CodePipeline
+AWS CodePipeline serves as the CI/CD automation service. It integrates the various stages of the development process, including build, test, and deployment. We have created a pipeline in CodePipeline connected to GitHub source code and Elastic Beanstalk environment. Whenever a push is made to the master branch, CodePipeline automatically initiates the build and deployment process.
