@@ -22,10 +22,10 @@ This project is a simple web service written in Spring Boot that manages Bosses 
 ## User Authentication
 
 ### Register User
-- **Method:** POST
-- **URL:** /auth/register
-- **Description:** Register a new user
-- **Payload:**
+* Method: POST
+* URL: /auth/register
+* Description: Register a new user
+* Payload:
   ```json
   {
     "username": "string",
