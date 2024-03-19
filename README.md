@@ -11,7 +11,7 @@ This project is a simple web service written in Spring Boot that manages Bosses 
 
 ## Instructions
 
-1. Ensure you have Java 21 installed on your machine.
+1. Ensure you have Java 17 installed on your machine.
 2. Clone the project from the GitHub repository.
 3. Configure your MySQL connection in the 'application.properties' file.
 4. Open 'SpringBootApp' and run the proggram to start the application.
