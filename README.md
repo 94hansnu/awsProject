@@ -33,11 +33,11 @@ This project is a simple web service written in Spring Boot that manages Bosses 
   }
 
 ### Log in User
-Method: POST
-URL: /auth/login
-Description: Log in user
-Payload:
-json
+- **Method:** POST
+- **URL:** /auth/login
+- **Description:** Log in user
+- **Payload:**
+ ```json
 
 {
   "username": "string",
