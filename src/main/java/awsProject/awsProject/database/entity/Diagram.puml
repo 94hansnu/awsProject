@@ -1,0 +1,41 @@
+@startuml
+
+package "Database" {
+    abstract class BaseEntity {
+        - id: Long
+    }
+
+    class Boss {
+        - title: String
+        + List<Slave> slaves
+    }
+
+    class Slave {
+        - nationality: String
+        - age: int
+        - efficient: boolean
+        - obedient: boolean
+        + Boss boss
+    }
+
+    class Role {
+        - authority: String
+    }
+
+    class User {
+        - username: String
+        - password: String
+        + Set<Role> authorities
+    }
+
+    Boss --|> BaseEntity
+    Slave --|> BaseEntity
+    Role --|> BaseEntity
+    User --|> BaseEntity
+
+    Boss "1" --> "*" Slave : has many
+    Slave "1" --> "1" Boss : belongs to
+    User "M" --> "*" Role : has many
+}
+
+@enduml
